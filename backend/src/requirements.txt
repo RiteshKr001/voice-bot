@@ -10,3 +10,4 @@ langchain-community
 langchain-core
 tiktoken
 sentence-transformers
+langchain-huggingface
