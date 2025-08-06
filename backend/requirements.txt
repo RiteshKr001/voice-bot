@@ -1,0 +1,12 @@
+langchain-groq
+langchain
+langchain-chroma
+fastapi
+uvicorn
+pydantic
+python-dotenv
+groq
+langchain-community
+langchain-core
+tiktoken
+sentence-transformers
