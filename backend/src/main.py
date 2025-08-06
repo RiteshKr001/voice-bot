@@ -1,17 +1,30 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from langchain_chroma import Chroma
-from model import llm, embedding
 from dotenv import load_dotenv
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.prompts import ChatPromptTemplate
 from fastapi.middleware.cors import CORSMiddleware
+from langchain_groq import ChatGroq
+from langchain_huggingface import HuggingFaceEmbeddings
+
+load_dotenv()
+
+llm = ChatGroq(
+    model="llama-3.3-70b-versatile",
+    temperature=0.1,
+    max_tokens=256
+)
+
+embedding = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2",
+)
+
 
 class QueryRequest(BaseModel):
     query: str
 
-load_dotenv()
 
 app = FastAPI()
 
